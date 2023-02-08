@@ -33,7 +33,7 @@ const IntegerPicker: React.FC<Props> = ({ min, max, initial, onPick }) => {
         }}
         disabled={value <= min}
       >
-        <Icon icon={MinusIcon} size={24} />
+        <Icon icon={MinusIcon} size={22} />
       </IconButton>
       <span className={style.value}>{value}</span>
       <IconButton
@@ -42,7 +42,7 @@ const IntegerPicker: React.FC<Props> = ({ min, max, initial, onPick }) => {
         }}
         disabled={value >= max}
       >
-        <Icon icon={PlusIcon} size={24} />
+        <Icon icon={PlusIcon} size={22} />
       </IconButton>
     </div>
   );
