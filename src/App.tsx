@@ -1,7 +1,9 @@
-import './App.css';
+import Header from './components/Header/Header';
 
-function App() {
-  return <div className="App"></div>;
-}
+const App = () => (
+  <div>
+    <Header />
+  </div>
+);
 
 export default App;
