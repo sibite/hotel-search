@@ -1,3 +1,9 @@
+:root {
+  --hp-blue: #009fe3;
+  --hp-darkblue: #201d51;
+  --hp-red: #e22566;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
