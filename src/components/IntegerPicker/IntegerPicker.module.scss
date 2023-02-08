@@ -1,0 +1,11 @@
+.picker {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.value {
+  // font-weight: bold;
+  padding-inline: 5px;
+  pointer-events: none;
+}
