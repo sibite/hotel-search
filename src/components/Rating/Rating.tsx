@@ -9,14 +9,13 @@ interface Props {
 const Rating: React.FC<Props> = ({ value, max }) => {
   const starsBP = Array(max)
     .fill(0)
-    .map((x, i) => i < value);
-
-  console.log(starsBP);
+    .map((x, i) => !i || i < value);
 
   return (
     <div className={style.rating}>
-      {starsBP.map((filled) => (
-        <Star filled={filled} />
+      {starsBP.map((filled, i) => (
+        // eslint-disable-next-line react/no-array-index-key
+        <Star key={i} filled={filled} />
       ))}
     </div>
   );
