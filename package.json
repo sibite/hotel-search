@@ -52,12 +52,7 @@
         }
       ],
       "no-underscore-dangle": [
-        "error",
-        {
-          "allow": [
-            "_id"
-          ]
-        }
+        "off"
       ],
       "react/react-in-jsx-scope": "off",
       "react/require-default-props": "off",
