@@ -1,6 +1,6 @@
 import Card from './Card';
 import HotelInfo from './HotelInfo';
-// import RoomsList from './RoomsList';
+import RoomsList from './RoomsList';
 import style from './HotelCard.module.scss';
 
 interface Props {}
@@ -8,7 +8,7 @@ interface Props {}
 const HotelCard: React.FC<Props> = () => (
   <Card className={style.card}>
     <HotelInfo />
-    {/* <RoomsList /> */}
+    <RoomsList />
   </Card>
 );
 export default HotelCard;
