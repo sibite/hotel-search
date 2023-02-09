@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Query, { QueryStateType } from './Query';
 import { HotelType } from './types/hotel.type';
 
@@ -13,9 +13,15 @@ const useHotelsQuery = () => {
 
   const refetch = () => hotelsQuery.fetch();
 
-  hotelsQuery.subscribe((state) => {
-    setQueryState(state);
-  });
+  useEffect(() => {
+    const subscription = hotelsQuery.subscribe((state) => {
+      setQueryState(state);
+    });
+
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, []);
 
   if (!hotelsQuery.state.isInitialized) {
     refetch();

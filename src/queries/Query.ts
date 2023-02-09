@@ -60,7 +60,7 @@ class Query<T> {
   }
 
   subscribe(callback: (payload: QueryStateType<T>) => any) {
-    this.publisher.subscribe(callback);
+    return this.publisher.subscribe(callback);
   }
 }
 
