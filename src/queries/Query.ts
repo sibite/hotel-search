@@ -56,7 +56,7 @@ class Query<T> {
   }
 
   private emitUpdate() {
-    this.publisher.emit(this._state);
+    this.publisher.emit(this.state);
   }
 
   subscribe(callback: (payload: QueryStateType<T>) => any) {

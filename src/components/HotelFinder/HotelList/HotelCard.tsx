@@ -10,7 +10,7 @@ interface Props {
 const HotelCard: React.FC<Props> = ({ id }) => (
   <Card className={style.card}>
     <HotelInfo id={id} />
-    <RoomsList />
+    <RoomsList hotelId={id} />
   </Card>
 );
 export default HotelCard;
