@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 16px;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.text {
+  flex-grow: 1;
+
+  h2 {
+    margin-top: 0;
+  }
+}
