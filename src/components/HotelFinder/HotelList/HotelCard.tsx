@@ -1,13 +1,15 @@
 import Card from './Card';
+import style from './HotelCard.module.scss';
 import HotelInfo from './HotelInfo';
 import RoomsList from './RoomsList';
-import style from './HotelCard.module.scss';
 
-interface Props {}
+interface Props {
+  id: string;
+}
 
-const HotelCard: React.FC<Props> = () => (
+const HotelCard: React.FC<Props> = ({ id }) => (
   <Card className={style.card}>
-    <HotelInfo />
+    <HotelInfo id={id} />
     <RoomsList />
   </Card>
 );
