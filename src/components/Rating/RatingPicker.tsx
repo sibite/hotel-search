@@ -29,7 +29,7 @@ const RatingPicker: React.FC<Props> = ({ max, onPick }) => {
 
   const onPointerUp = () => {
     setValue(displayValue);
-    if (onPick) onPick(value);
+    if (onPick) onPick(displayValue);
   };
 
   return (

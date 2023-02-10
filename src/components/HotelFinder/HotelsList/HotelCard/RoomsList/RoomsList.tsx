@@ -1,4 +1,4 @@
-import useRooms from '../../../queries/useRooms';
+import useFilteredRoomsIds from '../../../filtering/useFilteredRoomsIds';
 import Room from './Room';
 import style from './RoomsList.module.scss';
 
@@ -7,11 +7,11 @@ interface Props {
 }
 
 const RoomsList: React.FC<Props> = ({ hotelId }) => {
-  const rooms = useRooms(hotelId).roomsIds;
+  const filteredRoomsIds = useFilteredRoomsIds(hotelId);
 
   return (
     <div className={style.list}>
-      {rooms.map((id) => (
+      {filteredRoomsIds.map((id) => (
         <Room key={id} hotelId={hotelId} id={id} />
       ))}
     </div>

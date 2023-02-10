@@ -1,7 +1,7 @@
-import useHotels from '../../../queries/useHotels';
-import Rating from '../../Rating/Rating';
+import useHotels from '../../../../queries/useHotels';
+import Rating from '../../../Rating/Rating';
 import style from './HotelInfo.module.scss';
-import PhotosSlider from './PhotosSlider/PhotosSlider';
+import PhotosSlider from '../PhotosSlider/PhotosSlider';
 
 interface Props {
   id: string;

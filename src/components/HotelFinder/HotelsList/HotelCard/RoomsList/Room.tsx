@@ -1,4 +1,4 @@
-import useRooms from '../../../queries/useRooms';
+import useRooms from '../../../../../queries/useRooms';
 import style from './Room.module.scss';
 
 interface Props {
