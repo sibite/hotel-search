@@ -1,17 +1,21 @@
 import useHotels from '../../../queries/useHotels';
 import Rating from '../../Rating/Rating';
 import style from './HotelInfo.module.scss';
+import PhotosSlider from './PhotosSlider/PhotosSlider';
 
 interface Props {
   id: string;
 }
 
 const HotelInfo: React.FC<Props> = ({ id }) => {
-  const { name, address1, address2, starRating } = useHotels().hotelsById[id];
+  const { name, address1, address2, starRating, images } =
+    useHotels().hotelsById[id];
+
+  const URLs = images?.map((image) => image.url) ?? [];
 
   return (
     <div className={style.container}>
-      <div style={{ width: '150px', height: '150px', background: '#cccccc' }} />
+      <PhotosSlider URLs={URLs} width={180} height={135} />
       <div className={style.text}>
         <h2>{name}</h2>
         <p>
