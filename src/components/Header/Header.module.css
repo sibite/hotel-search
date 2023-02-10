@@ -1,6 +1,7 @@
 .header {
   width: 100%;
   height: clamp(120px, 300px, 30vh);
+  background-color: #e5e5e5;
   background-image: url("./header-image.jpg");
   background-position: center;
   background-size: cover;

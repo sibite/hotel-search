@@ -6,6 +6,10 @@
   height: 100%;
   background: rgba(0, 0, 0, 0.6);
 
+  animation-name: fade-in;
+  animation-duration: 500ms;
+  animation-timing-function: cubic-bezier(0.2, 0.7, 0.2, 1);
+
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
@@ -13,9 +17,33 @@
   gap: 10px;
 }
 
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes zoom-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 .image-wrapper {
   flex-shrink: 1;
   overflow: hidden;
+
+  animation-name: zoom-in;
+  animation-duration: 400ms;
+  animation-timing-function: cubic-bezier(0.2, 0.7, 0.2, 1);
 
   img {
     max-width: 100%;
@@ -23,6 +51,8 @@
 }
 
 .button {
+  box-shadow: none;
+
   &:not(:disabled):hover {
     background: rgba(255, 255, 255, 0.2);
   }

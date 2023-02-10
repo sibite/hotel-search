@@ -18,8 +18,5 @@
 .control {
   display: flex;
   align-items: center;
-
-  & > span {
-    margin-right: 4px;
-  }
+  gap: 10px;
 }
