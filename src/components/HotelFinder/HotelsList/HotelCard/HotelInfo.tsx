@@ -15,7 +15,7 @@ const HotelInfo: React.FC<Props> = ({ id }) => {
 
   return (
     <div className={style.container}>
-      <PhotosSlider URLs={URLs} width={180} height={135} />
+      <PhotosSlider URLs={URLs} width="200px" height="150px" />
       <div className={style.text}>
         <h2>{name}</h2>
         <p>

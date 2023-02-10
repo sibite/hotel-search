@@ -12,8 +12,8 @@ import style from './PhotosSlider.module.scss';
 
 interface Props {
   URLs: string[];
-  width: number;
-  height: number;
+  width: string;
+  height: string;
 }
 
 const PhotosSlider: React.FC<Props> = ({ URLs, width, height }) => {
@@ -25,8 +25,9 @@ const PhotosSlider: React.FC<Props> = ({ URLs, width, height }) => {
   };
 
   const styles = {
-    '--ps-width': `${width}px`,
-    '--ps-height': `${height}px`,
+    width,
+    height,
+    '--photos-count': URLs.length,
   } as CSSProperties;
 
   return (
@@ -43,9 +44,11 @@ const PhotosSlider: React.FC<Props> = ({ URLs, width, height }) => {
         onClick={openFullscreen}
         role="none"
       >
-        <div className={style.slider} style={{ left: `-${index * width}px` }}>
+        <div className={style.slider} style={{ left: `-${index * 100}%` }}>
           {URLs.map((URL, i) => (
-            <img alt="Hotel" key={URL} src={URL} className={style.image} />
+            <div className={style['image-wrapper']}>
+              <img alt="Hotel" key={URL} src={URL} className={style.image} />
+            </div>
           ))}
         </div>
       </div>
