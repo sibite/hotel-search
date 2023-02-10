@@ -15,10 +15,16 @@ const HotelInfo: React.FC<Props> = ({ id }) => {
 
   return (
     <div className={style.container}>
-      <PhotosSlider URLs={URLs} width="200px" height="150px" />
+      <PhotosSlider
+        URLs={URLs}
+        width="var(--ps-width)"
+        height="var(--ps-height)"
+      />
       <div className={style.text}>
         <h2>{name}</h2>
         <p>
+          <span className={style['address-label']}>Address</span>
+          <br />
           {address1}
           <br />
           {address2}

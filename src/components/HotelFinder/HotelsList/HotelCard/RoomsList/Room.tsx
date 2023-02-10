@@ -12,7 +12,7 @@ const Room: React.FC<Props> = ({ hotelId, id }) => {
   return (
     <div className={style.room}>
       <div className={style.props}>
-        <h3>{name}</h3>
+        <h4>{name}</h4>
         <p>
           Adults: {occupancy.maxAdults}
           <br />

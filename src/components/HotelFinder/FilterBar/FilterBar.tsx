@@ -12,23 +12,25 @@ const FilterBar: React.FC<Props> = () => {
   return (
     <div className={style['filter-bar']}>
       <RatingPicker max={5} onPick={(x) => setRating(x)} />
-      <div className={style.control}>
-        <span>Adults:</span>
-        <IntegerPicker
-          min={0}
-          max={9}
-          initial={1}
-          onPick={(x) => setAdults(x)}
-        />
-      </div>
-      <div className={style.control}>
-        <span>Children:</span>
-        <IntegerPicker
-          min={0}
-          max={9}
-          initial={0}
-          onPick={(x) => setChildren(x)}
-        />
+      <div className={style.group}>
+        <div className={style.control}>
+          <span>Adults:</span>
+          <IntegerPicker
+            min={0}
+            max={9}
+            initial={1}
+            onPick={(x) => setAdults(x)}
+          />
+        </div>
+        <div className={style.control}>
+          <span>Children:</span>
+          <IntegerPicker
+            min={0}
+            max={9}
+            initial={0}
+            onPick={(x) => setChildren(x)}
+          />
+        </div>
       </div>
     </div>
   );

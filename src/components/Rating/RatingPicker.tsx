@@ -1,4 +1,4 @@
-import React, { PointerEvent, useCallback, useRef, useState } from 'react';
+import React, { MouseEvent, useCallback, useRef, useState } from 'react';
 import style from './Rating.module.scss';
 import Rating from './Rating';
 
@@ -13,30 +13,40 @@ const RatingPicker: React.FC<Props> = ({ max, onPick }) => {
 
   const pickerRef = useRef<HTMLDivElement>(null);
 
-  const pointerMoveHandler = useCallback(
-    (event: PointerEvent) => {
-      if (!pickerRef.current) return;
+  const getHoveredValue = useCallback(
+    (mouseX: number) => {
+      if (!pickerRef.current) return 1;
 
       const width = pickerRef.current.clientWidth;
-      const x = event.clientX - pickerRef.current.offsetLeft;
+      const x = mouseX - pickerRef.current.offsetLeft;
 
-      const hoveredValue = Math.max(1, Math.floor((x / width) * max + 1));
-
-      setDisplayValue(hoveredValue);
+      return Math.max(1, Math.floor((x / width) * max + 1));
     },
-    [max]
+    [pickerRef, max]
   );
 
-  const onPointerUp = () => {
-    setValue(displayValue);
-    if (onPick) onPick(displayValue);
+  const pointerMoveHandler = useCallback(
+    (event: MouseEvent) => {
+      if (!pickerRef.current) return;
+      setDisplayValue(getHoveredValue(event.clientX));
+    },
+    [getHoveredValue]
+  );
+
+  const onPointerUp = (event: MouseEvent) => {
+    const hoveredValue = getHoveredValue(event.clientX);
+    setValue(hoveredValue);
+    if (onPick) onPick(hoveredValue);
   };
 
   return (
     <div
       className={style.picker}
-      onPointerMove={pointerMoveHandler}
-      onPointerLeave={() => setDisplayValue(value)}
+      role="slider"
+      tabIndex={0}
+      aria-valuenow={value}
+      onMouseMove={pointerMoveHandler}
+      onMouseLeave={() => setDisplayValue(value)}
       onPointerUp={onPointerUp}
       ref={pickerRef}
     >

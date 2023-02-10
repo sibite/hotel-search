@@ -46,8 +46,8 @@ const PhotosSlider: React.FC<Props> = ({ URLs, width, height }) => {
       >
         <div className={style.slider} style={{ left: `-${index * 100}%` }}>
           {URLs.map((URL, i) => (
-            <div className={style['image-wrapper']}>
-              <img alt="Hotel" key={URL} src={URL} className={style.image} />
+            <div className={style['image-wrapper']} key={URL}>
+              <img alt="Hotel" src={URL} className={style.image} />
             </div>
           ))}
         </div>

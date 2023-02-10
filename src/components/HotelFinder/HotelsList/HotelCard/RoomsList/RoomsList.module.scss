@@ -12,3 +12,18 @@
     margin: 0 auto;
   }
 }
+
+.label {
+  margin-top: 0px;
+  margin-left: 20px;
+  color: var(--hp-red);
+  line-height: 1.5rem;
+  font-weight: bold;
+}
+
+.count {
+  background: #f0f0f0;
+  color: black;
+  border-radius: 3px;
+  padding: 0px 6px;
+}

@@ -14,6 +14,9 @@ const RoomsList: React.FC<Props> = ({ hotelId }) => {
 
   return (
     <div className={style.list}>
+      <h3 className={style.label}>
+        Rooms <span className={style.count}>{filteredRoomsIds.length}</span>
+      </h3>
       {filteredRoomsIds.map((id) => (
         <Room key={id} hotelId={hotelId} id={id} />
       ))}
