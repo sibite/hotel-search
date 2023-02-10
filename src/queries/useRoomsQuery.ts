@@ -25,7 +25,7 @@ const useRoomsQuery = (hotelId: string) => {
     return () => {
       subscription.unsubscribe();
     };
-  }, []);
+  }, [hotelId]);
 
   if (!roomsQueries[hotelId].state.isInitialized) {
     refetch();

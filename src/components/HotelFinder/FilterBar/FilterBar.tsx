@@ -9,11 +9,11 @@ const FilterBar: React.FC<Props> = () => (
     <RatingPicker max={5} />
     <div className={style.control}>
       <span>Adults:</span>
-      <IntegerPicker min={0} max={10} initial={1} />
+      <IntegerPicker min={0} max={9} initial={1} />
     </div>
     <div className={style.control}>
       <span>Children:</span>
-      <IntegerPicker min={0} max={10} initial={1} />
+      <IntegerPicker min={0} max={9} initial={0} />
     </div>
   </div>
 );
