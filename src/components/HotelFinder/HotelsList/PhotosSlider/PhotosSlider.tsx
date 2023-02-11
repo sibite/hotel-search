@@ -17,7 +17,7 @@ interface Props {
 }
 
 const PhotosSlider: React.FC<Props> = ({ URLs, width, height }) => {
-  const { index, slide } = useSlider();
+  const { index, slide } = useSlider(URLs.length);
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
 
   const openFullscreen = () => {

@@ -1,6 +1,13 @@
-import React, { MouseEvent, useCallback, useRef, useState } from 'react';
+import React, {
+  KeyboardEvent,
+  MouseEvent,
+  useCallback,
+  useRef,
+  useState,
+} from 'react';
 import style from './Rating.module.scss';
 import Rating from './Rating';
+import inRange from '../misc/inRange';
 
 interface Props {
   max: number;
@@ -8,10 +15,16 @@ interface Props {
 }
 
 const RatingPicker: React.FC<Props> = ({ max, onPick }) => {
-  const [value, setValue] = useState<number>(0);
-  const [displayValue, setDisplayValue] = useState<number>(0);
+  const [value, setValue] = useState<number>(1);
+  const [displayValue, setDisplayValue] = useState<number>(1);
 
   const pickerRef = useRef<HTMLDivElement>(null);
+
+  const pickHandler = (rating: number) => {
+    setValue(rating);
+    setDisplayValue(rating);
+    if (onPick) onPick(rating);
+  };
 
   const getHoveredValue = useCallback(
     (mouseX: number) => {
@@ -20,7 +33,7 @@ const RatingPicker: React.FC<Props> = ({ max, onPick }) => {
       const width = pickerRef.current.clientWidth;
       const x = mouseX - pickerRef.current.offsetLeft;
 
-      return Math.max(1, Math.floor((x / width) * max + 1));
+      return inRange(1, max, Math.floor((x / width) * max + 1));
     },
     [pickerRef, max]
   );
@@ -34,9 +47,16 @@ const RatingPicker: React.FC<Props> = ({ max, onPick }) => {
   );
 
   const onPointerUp = (event: MouseEvent) => {
-    const hoveredValue = getHoveredValue(event.clientX);
-    setValue(hoveredValue);
-    if (onPick) onPick(hoveredValue);
+    pickHandler(getHoveredValue(event.clientX));
+  };
+
+  const keyDownHandler = (event: KeyboardEvent) => {
+    const diff =
+      {
+        ArrowLeft: -1,
+        ArrowRight: 1,
+      }[event.code] || 0;
+    pickHandler(inRange(1, max, value + diff));
   };
 
   return (
@@ -48,6 +68,7 @@ const RatingPicker: React.FC<Props> = ({ max, onPick }) => {
       onMouseMove={pointerMoveHandler}
       onMouseLeave={() => setDisplayValue(value)}
       onPointerUp={onPointerUp}
+      onKeyDown={keyDownHandler}
       ref={pickerRef}
     >
       <Rating max={max} value={displayValue} />

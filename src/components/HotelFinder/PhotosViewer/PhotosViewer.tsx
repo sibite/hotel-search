@@ -7,6 +7,7 @@ import { MouseEvent } from 'react';
 import { createPortal } from 'react-dom';
 import IconButton from '../../IconButton/IconButton';
 import Icon from '../../misc/Icon';
+import useKeyPress from '../../misc/useKeyPress';
 import useSlider from '../../misc/useSlider';
 import style from './PhotosViewer.module.scss';
 
@@ -17,7 +18,7 @@ interface Props {
 }
 
 const PhotosViewer: React.FC<Props> = ({ URLs, onClose, initialIndex = 0 }) => {
-  const { index, slide } = useSlider(initialIndex);
+  const { index, slide } = useSlider(URLs.length, initialIndex);
 
   const parentEl = document.getElementById('portal') as HTMLDivElement;
 
@@ -26,11 +27,15 @@ const PhotosViewer: React.FC<Props> = ({ URLs, onClose, initialIndex = 0 }) => {
     onClose();
   };
 
+  useKeyPress('Escape', onClose);
+  useKeyPress('ArrowLeft', slide(-1));
+  useKeyPress('ArrowRight', slide(1));
+
   return createPortal(
     <div
+      onClick={closeHandler}
       className={style.overlay}
       id="background"
-      onClick={closeHandler}
       role="none"
     >
       <IconButton
