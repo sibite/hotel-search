@@ -1,13 +1,6 @@
-<!-- PROJECT LOGO -->
-
-
-<!-- ABOUT THE PROJECT -->
-
 ## About The Project
 
 Challenge from Guestline for job application
-
-<!-- GETTING STARTED -->
 
 ## Getting Started
 
@@ -22,7 +15,7 @@ Challenge from Guestline for job application
    ```sh
    git clone <repository_url>
    ```
-   
+
 2. Install NPM packages
 
    ```sh
@@ -31,8 +24,30 @@ Challenge from Guestline for job application
 
 ### Development
 
-1. Start the React app
+Start the React app
+
+```sh
+npm start
+```
+
+## Testing
+
+```sh
+npm test
+```
+
+### Deployment
+
+1. Build the project
 
    ```sh
-   npm start
+   npm run build
+   ```
+
+2. Deploy files to a server configured for serving SPA
+
+   or start server locally
+
+   ```sh
+   npx http-server ./build
    ```
