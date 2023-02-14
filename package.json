@@ -78,6 +78,14 @@
             }
           ]
         }
+      },
+      {
+        "files": [
+          "**/*.test.ts?(x)"
+        ],
+        "rules": {
+          "react/function-component-definition": "off"
+        }
       }
     ]
   },

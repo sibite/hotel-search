@@ -4,7 +4,7 @@ interface Props {
   children: ReactNode;
 }
 
-type FiltersContextType = {
+export type FiltersContextType = {
   minRating: number;
   minAdults: number;
   minChildren: number;
@@ -13,14 +13,18 @@ type FiltersContextType = {
   setChildren: (x: number) => void;
 };
 
-export const FiltersContext = createContext<FiltersContextType>({
-  minRating: 0,
+export const defaultFiltersContextValue = {
+  minRating: 1,
   minAdults: 1,
   minChildren: 0,
   setRating() {},
   setAdults() {},
   setChildren() {},
-});
+};
+
+export const FiltersContext = createContext<FiltersContextType>(
+  defaultFiltersContextValue
+);
 
 const FiltersContextProvider: React.FC<Props> = ({ children: childrenDOM }) => {
   const [rating, setRating] = useState<number>(1);

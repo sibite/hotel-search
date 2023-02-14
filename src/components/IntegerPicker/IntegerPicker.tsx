@@ -1,8 +1,9 @@
 import { MinusIcon, PlusIcon } from '@heroicons/react/24/solid';
-import { useCallback, useState } from 'react';
-import style from './IntegerPicker.module.scss';
-import Icon from '../misc/Icon';
+import { useState } from 'react';
 import IconButton from '../IconButton/IconButton';
+import Icon from '../misc/Icon';
+import inRange from '../misc/inRange';
+import style from './IntegerPicker.module.scss';
 
 interface Props {
   min: number;
@@ -12,15 +13,10 @@ interface Props {
 }
 
 const IntegerPicker: React.FC<Props> = ({ min, max, initial, onPick }) => {
-  const getValueInRange = useCallback(
-    (value: number) => Math.min(max, Math.max(min, value)),
-    [min, max]
-  );
-
-  const [value, setValue] = useState<number>(getValueInRange(initial));
+  const [value, setValue] = useState<number>(inRange(min, max, initial));
 
   const modifyValue = (diff: number) => {
-    const newValue = getValueInRange(value + diff);
+    const newValue = inRange(min, max, value + diff);
     setValue(newValue);
     if (onPick) onPick(newValue);
   };
@@ -32,6 +28,7 @@ const IntegerPicker: React.FC<Props> = ({ min, max, initial, onPick }) => {
           modifyValue(-1);
         }}
         disabled={value <= min}
+        data-testid="minus"
       >
         <Icon icon={MinusIcon} size={22} />
       </IconButton>
@@ -41,6 +38,7 @@ const IntegerPicker: React.FC<Props> = ({ min, max, initial, onPick }) => {
           modifyValue(1);
         }}
         disabled={value >= max}
+        data-testid="plus"
       >
         <Icon icon={PlusIcon} size={22} />
       </IconButton>

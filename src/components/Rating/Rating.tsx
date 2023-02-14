@@ -9,7 +9,7 @@ interface Props {
 const Rating: React.FC<Props> = ({ value, max }) => {
   const starsBP = Array(max)
     .fill(0)
-    .map((x, i) => !i || i < value);
+    .map((x, i) => !!(i === 0 || i < value));
 
   return (
     <div className={style.rating}>

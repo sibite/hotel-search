@@ -54,22 +54,25 @@ const PhotosSlider: React.FC<Props> = ({ URLs, width, height }) => {
       </div>
       <div className={style.overlay}>
         <IconButton
-          onClick={slide(-1)}
+          onClick={() => slide(-1)}
           className={style.button}
           disabled={index <= 0}
+          data-testid="prev-button"
         >
           <Icon icon={ChevronLeftIcon} size={24} color="white" />
         </IconButton>
         <IconButton
           onClick={openFullscreen}
           className={`${style.button} ${style['fs-button']}`}
+          data-testid="fs-button"
         >
           <Icon icon={ArrowsPointingOutIcon} size={26} color="white" />
         </IconButton>
         <IconButton
-          onClick={slide(1)}
+          onClick={() => slide(1)}
           className={style.button}
           disabled={index >= URLs.length - 1}
+          data-testid="next-button"
         >
           <Icon icon={ChevronRightIcon} size={24} color="white" />
         </IconButton>

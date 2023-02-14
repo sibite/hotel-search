@@ -3,7 +3,7 @@ import {
   ChevronRightIcon,
   XMarkIcon,
 } from '@heroicons/react/24/solid';
-import { MouseEvent } from 'react';
+import { MouseEvent, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 import IconButton from '../../IconButton/IconButton';
 import Icon from '../../misc/Icon';
@@ -28,8 +28,14 @@ const PhotosViewer: React.FC<Props> = ({ URLs, onClose, initialIndex = 0 }) => {
   };
 
   useKeyPress('Escape', onClose);
-  useKeyPress('ArrowLeft', slide(-1));
-  useKeyPress('ArrowRight', slide(1));
+  useKeyPress(
+    'ArrowLeft',
+    useCallback(() => slide(-1), [slide])
+  );
+  useKeyPress(
+    'ArrowRight',
+    useCallback(() => slide(1), [slide])
+  );
 
   return createPortal(
     <div
@@ -39,9 +45,10 @@ const PhotosViewer: React.FC<Props> = ({ URLs, onClose, initialIndex = 0 }) => {
       role="none"
     >
       <IconButton
-        onClick={slide(-1)}
+        onClick={() => slide(-1)}
         className={style.button}
         disabled={index <= 0}
+        data-testid="prev-button"
       >
         <Icon icon={ChevronLeftIcon} size={36} color="white" />
       </IconButton>
@@ -49,15 +56,17 @@ const PhotosViewer: React.FC<Props> = ({ URLs, onClose, initialIndex = 0 }) => {
         <img alt="Hotel" key={URLs[index]} src={URLs[index]} />
       </div>
       <IconButton
-        onClick={slide(1)}
+        onClick={() => slide(1)}
         className={style.button}
         disabled={index >= URLs.length - 1}
+        data-testid="next-button"
       >
         <Icon icon={ChevronRightIcon} size={36} color="white" />
       </IconButton>
       <IconButton
         onClick={() => onClose()}
         className={`${style.button} ${style['close-button']}`}
+        data-testid="close-button"
       >
         <Icon icon={XMarkIcon} size={36} color="white" />
       </IconButton>
