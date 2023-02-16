@@ -1,12 +1,12 @@
 import { renderHook, act } from '@testing-library/react';
 import useSlider from './useSlider';
 
-test('should initialize index correctly', () => {
+test('initializes index correctly', () => {
   const { result } = renderHook(() => useSlider(5, 2));
   expect(result.current.index).toBe(2);
 });
 
-test('should be able to slide within the range', () => {
+test('slides within the range', () => {
   const { result } = renderHook(() => useSlider(5, 2));
   act(() => result.current.slide(1));
   expect(result.current.index).toBe(3);
@@ -15,7 +15,7 @@ test('should be able to slide within the range', () => {
   expect(result.current.index).toBe(1);
 });
 
-test('should not be able to slide out of the range', () => {
+test('does not allow to slide out of the range', () => {
   const { result } = renderHook(() => useSlider(5, 2));
   act(() => result.current.slide(-3));
   expect(result.current.index).toBe(0);

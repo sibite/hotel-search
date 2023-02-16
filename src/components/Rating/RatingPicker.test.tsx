@@ -7,7 +7,7 @@ jest.mock('./Star.tsx', () => ({ filled }: { filled: boolean }) => (
   </div>
 ));
 
-test('it should change the rating on arrow key down', () => {
+test('changes the rating on arrow key down', () => {
   render(<RatingPicker max={5} />);
   const picker = screen.getByRole('slider');
 
@@ -18,7 +18,7 @@ test('it should change the rating on arrow key down', () => {
   expect(picker).toHaveAttribute('aria-valuenow', '1');
 });
 
-test('it should trigger the onPick callback on mouse up', () => {
+test('triggers the onPick callback on mouse up', () => {
   const onPick = jest.fn();
   render(<RatingPicker max={5} onPick={onPick} />);
   const picker = screen.getByRole('slider');

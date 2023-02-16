@@ -37,7 +37,7 @@ const TestComponent = () => (
   <div>{useFilteredRoomsIds('id1').join(',') || 'no-rooms'}</div>
 );
 
-describe('filters rooms by occupancy correctly', () => {
+describe('filters rooms by occupancy', () => {
   test('adults: 0, children: 0', () => {
     render(
       <FiltersContext.Provider

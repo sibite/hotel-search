@@ -6,16 +6,14 @@ jest.mock('./RoomsList/RoomsList', () => () => (
   <div data-testid="rooms-list" />
 ));
 
-describe('HotelCard component', () => {
-  test('renders the HotelInfo component', () => {
-    render(<HotelCard id="hotel-1" />);
+test('renders the HotelInfo component', () => {
+  render(<HotelCard id="hotel-1" />);
 
-    expect(screen.getByTestId('hotel-info')).toBeInTheDocument();
-  });
+  expect(screen.getByTestId('hotel-info')).toBeInTheDocument();
+});
 
-  test('renders the RoomsList component', () => {
-    render(<HotelCard id="hotel-1" />);
+test('renders the RoomsList component', () => {
+  render(<HotelCard id="hotel-1" />);
 
-    expect(screen.getByTestId('rooms-list')).toBeInTheDocument();
-  });
+  expect(screen.getByTestId('rooms-list')).toBeInTheDocument();
 });

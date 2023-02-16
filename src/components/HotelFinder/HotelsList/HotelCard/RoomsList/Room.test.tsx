@@ -21,20 +21,22 @@ jest.mock('../../../../../queries/useRooms', () => (hotelId: string) => ({
   },
 }));
 
-test('renders the name of the room', () => {
-  render(<Room hotelId="hotel1" id="room1" />);
-  expect(screen.getByText('Deluxe Twin')).toBeInTheDocument();
-});
+describe('renders', () => {
+  test('name of the room', () => {
+    render(<Room hotelId="hotel1" id="room1" />);
+    expect(screen.getByText('Deluxe Twin')).toBeInTheDocument();
+  });
 
-test('renders the maximum occupancy information', () => {
-  render(<Room hotelId="hotel1" id="room1" />);
-  expect(screen.getByText(/Adults:\s+2/)).toBeInTheDocument();
-  expect(screen.getByText(/Children:\s+1/)).toBeInTheDocument();
-});
+  test('maximum occupancy information', () => {
+    render(<Room hotelId="hotel1" id="room1" />);
+    expect(screen.getByText(/Adults:\s+2/)).toBeInTheDocument();
+    expect(screen.getByText(/Children:\s+1/)).toBeInTheDocument();
+  });
 
-test('renders the long description of the room', () => {
-  render(<Room hotelId="hotel1" id="room1" />);
-  expect(
-    screen.getByText('A spacious and luxurious room with a beautiful view.')
-  ).toBeInTheDocument();
+  test('long description of the room', () => {
+    render(<Room hotelId="hotel1" id="room1" />);
+    expect(
+      screen.getByText('A spacious and luxurious room with a beautiful view.')
+    ).toBeInTheDocument();
+  });
 });

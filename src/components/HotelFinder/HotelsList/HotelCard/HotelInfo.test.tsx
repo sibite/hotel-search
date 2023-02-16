@@ -34,33 +34,35 @@ jest.mock(
       <div data-testid="photos-slider">{URLs.join(', ')}</div>
 );
 
-test('renders photo slider', () => {
-  render(<HotelInfo id="1" />);
+describe('renders', () => {
+  test('photo slider', () => {
+    render(<HotelInfo id="1" />);
 
-  const photosSlider = screen.getByTestId('photos-slider');
-  expect(photosSlider).toHaveTextContent('image1.jpg, image2.jpg');
-});
+    const photosSlider = screen.getByTestId('photos-slider');
+    expect(photosSlider).toHaveTextContent('image1.jpg, image2.jpg');
+  });
 
-test('renders hotel name', () => {
-  render(<HotelInfo id="1" />);
+  test('hotel name', () => {
+    render(<HotelInfo id="1" />);
 
-  const hotelName = screen.getByText('Hotel 1');
-  expect(hotelName).toBeInTheDocument();
-});
+    const hotelName = screen.getByText('Hotel 1');
+    expect(hotelName).toBeInTheDocument();
+  });
 
-test('renders address', () => {
-  render(<HotelInfo id="1" />);
+  test('address', () => {
+    render(<HotelInfo id="1" />);
 
-  const address = screen.getByText(/Address 1/);
-  expect(address).toBeInTheDocument();
+    const address = screen.getByText(/Address 1/);
+    expect(address).toBeInTheDocument();
 
-  const address2 = screen.getByText(/Address 2/);
-  expect(address2).toBeInTheDocument();
-});
+    const address2 = screen.getByText(/Address 2/);
+    expect(address2).toBeInTheDocument();
+  });
 
-test('renders rating', () => {
-  render(<HotelInfo id="1" />);
+  test('rating', () => {
+    render(<HotelInfo id="1" />);
 
-  const star = screen.getAllByText('star-filled');
-  expect(star).toHaveLength(4);
+    const star = screen.getAllByText('star-filled');
+    expect(star).toHaveLength(4);
+  });
 });

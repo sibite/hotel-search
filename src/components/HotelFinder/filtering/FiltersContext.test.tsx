@@ -6,7 +6,7 @@ import FiltersContextProvider, {
   FiltersContextType,
 } from './FiltersContext';
 
-test('should render children correctly', () => {
+test('renders children correctly', () => {
   render(
     <FiltersContextProvider>
       <div>12345</div>
@@ -20,7 +20,7 @@ const wrapper = ({ children }: { children: ReactNode }) => (
   <FiltersContextProvider>{children}</FiltersContextProvider>
 );
 
-test('should provide correct context values', () => {
+test('provides correct context values', () => {
   let context: FiltersContextType;
 
   render(
@@ -42,7 +42,7 @@ test('should provide correct context values', () => {
   });
 });
 
-test('should update context values when set functions are called', () => {
+test('updates context values when set functions are called', () => {
   let context: FiltersContextType;
 
   render(
